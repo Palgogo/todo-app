@@ -30,3 +30,11 @@ databaseChangeLog:
         - sqlFile:
             relativeToChangelogFile: true
             path: changes/v0004_add_comments.sql
+
+  - changeSet:
+      id: v0005_add_attachments
+      author: palgogo
+      changes:
+        - sqlFile:
+            relativeToChangelogFile: true
+            path: changes/v0005_add_attachments.sql
