@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: v0001_init
+      author: palgogo
+      changes:
+        - sqlFile:
+            relativeToChangelogFile: true
+            path: changes/v0001_add_department.sql
