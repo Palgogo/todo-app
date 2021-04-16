@@ -1,16 +1,32 @@
 databaseChangeLog:
   - changeSet:
-      id: v0001_add_department
+      id: v0001_add_departments
       author: palgogo
       changes:
         - sqlFile:
             relativeToChangelogFile: true
-            path: changes/v0001_add_department.sql
+            path: changes/v0001_add_departments.sql
 
   - changeSet:
-      id: v0002_add_user
+      id: v0002_add_users
       author: palgogo
       changes:
         - sqlFile:
             relativeToChangelogFile: true
-            path: changes/v0002_add_user.sql
+            path: changes/v0002_add_users.sql
+
+  - changeSet:
+      id: v0003_add_tasks
+      author: palgogo
+      changes:
+        - sqlFile:
+            relativeToChangelogFile: true
+            path: changes/v0003_add_tasks.sql
+
+  - changeSet:
+      id: v0004_add_comments.sql
+      author: palgogo
+      changes:
+        - sqlFile:
+            relativeToChangelogFile: true
+            path: changes/v0004_add_comments.sql
