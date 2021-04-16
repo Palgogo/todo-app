@@ -1,8 +1,16 @@
 databaseChangeLog:
   - changeSet:
-      id: v0001_init
+      id: v0001_add_department
       author: palgogo
       changes:
         - sqlFile:
             relativeToChangelogFile: true
             path: changes/v0001_add_department.sql
+
+  - changeSet:
+      id: v0002_add_user
+      author: palgogo
+      changes:
+        - sqlFile:
+            relativeToChangelogFile: true
+            path: changes/v0002_add_user.sql
