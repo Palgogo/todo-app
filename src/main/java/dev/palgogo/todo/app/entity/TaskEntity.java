@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import java.time.Instant;
 import java.util.UUID;
@@ -39,4 +40,9 @@ public class TaskEntity {
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
+
+    @PrePersist
+    private void prePersist() {
+        this.createdAt = Instant.now();
+    }
 }
