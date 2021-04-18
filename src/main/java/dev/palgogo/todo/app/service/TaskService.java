@@ -1,5 +1,6 @@
 package dev.palgogo.todo.app.service;
 
+import dev.palgogo.todo.app.dto.CommentDto;
 import dev.palgogo.todo.app.dto.CreateCommentRequest;
 import dev.palgogo.todo.app.dto.CreateTaskRequest;
 import dev.palgogo.todo.app.dto.TaskDto;
@@ -15,5 +16,7 @@ public interface TaskService {
 
     void updateAssignee(UUID id, UpdateAssigneeRequest updateAssigneeRequest);
 
-    TaskDto addComment(UUID id, CreateCommentRequest createCommentRequest);
+    CommentDto addComment(CreateCommentRequest createCommentRequest);
+
+    void deleteComment(UUID id);
 }

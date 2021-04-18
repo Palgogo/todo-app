@@ -1,5 +1,6 @@
 package dev.palgogo.todo.app.service.impl;
 
+import dev.palgogo.todo.app.dto.CommentDto;
 import dev.palgogo.todo.app.dto.CreateCommentRequest;
 import dev.palgogo.todo.app.dto.CreateTaskRequest;
 import dev.palgogo.todo.app.dto.TaskDto;
@@ -52,17 +53,21 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public TaskDto addComment(UUID id, CreateCommentRequest createCommentRequest) {
-        Optional<TaskEntity> entityOptional = taskRepository.findById(id);
-        entityOptional.ifPresent(taskEntity -> {
+    public CommentDto addComment(CreateCommentRequest createCommentRequest) {
             CommentEntity commentEntity = new CommentEntity();
-            commentEntity.setTaskId(id);
+            commentEntity.setTaskId(createCommentRequest.getTaskId());
             commentEntity.setAuthorId(createCommentRequest.getAuthorId());
             commentEntity.setText(createCommentRequest.getComment());
-           commentRepository.save(commentEntity);
-        });
+        CommentEntity entity = commentRepository.save(commentEntity);
         //should return taskDto with comment
-        return null;
+        //map value
+        return new CommentDto();
+    }
+
+    @Override
+    public void deleteComment(UUID id) {
+        //check if can delete
+        commentRepository.deleteById(id);
     }
 
     private TaskEntity save(TaskEntity entity) {
