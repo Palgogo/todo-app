@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS tasks
     theme       VARCHAR(255) NOT NULL,
     description TEXT,
     author_id   UUID         NOT NULL,
-    assignee_id UUID         NULL,
+    assignee_id UUID,
     status      VARCHAR(100),
 
     CONSTRAINT "pk_task" PRIMARY KEY (id),
