@@ -1,5 +1,6 @@
 package dev.palgogo.todo.app.controller;
 
+import dev.palgogo.todo.app.dto.CreateCommentRequest;
 import dev.palgogo.todo.app.dto.CreateTaskRequest;
 import dev.palgogo.todo.app.dto.TaskDto;
 import dev.palgogo.todo.app.dto.UpdateAssigneeRequest;
@@ -46,5 +47,13 @@ public class TaskController {
     ) {
         taskService.updateAssignee(id, updateAssigneeRequest);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{id}/comment")
+    public ResponseEntity<TaskDto> addComment(
+            @PathVariable UUID id,
+            @RequestBody CreateCommentRequest createCommentRequest
+    ){
+        return ResponseEntity.ok(taskService.addComment(id, createCommentRequest));
     }
 }
