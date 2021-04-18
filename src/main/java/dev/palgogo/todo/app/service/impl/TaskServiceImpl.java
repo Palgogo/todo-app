@@ -3,6 +3,7 @@ package dev.palgogo.todo.app.service.impl;
 import dev.palgogo.todo.app.dto.CommentDto;
 import dev.palgogo.todo.app.dto.CreateCommentRequest;
 import dev.palgogo.todo.app.dto.CreateTaskRequest;
+import dev.palgogo.todo.app.dto.TaskDetailsDto;
 import dev.palgogo.todo.app.dto.TaskDto;
 import dev.palgogo.todo.app.dto.UpdateAssigneeRequest;
 import dev.palgogo.todo.app.dto.UpdateStatusRequest;
@@ -12,6 +13,7 @@ import dev.palgogo.todo.app.entity.TaskStatus;
 import dev.palgogo.todo.app.mapper.TaskMapper;
 import dev.palgogo.todo.app.repository.CommentRepository;
 import dev.palgogo.todo.app.repository.TaskRepository;
+import dev.palgogo.todo.app.service.AttachmentService;
 import dev.palgogo.todo.app.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,7 @@ public class TaskServiceImpl implements TaskService {
     private final TaskMapper taskMapper;
     private final TaskRepository taskRepository;
     private final CommentRepository commentRepository;
+    private final AttachmentService attachmentService;
 
     @Override
     public TaskDto create(CreateTaskRequest createTaskRequest) {
@@ -68,6 +71,11 @@ public class TaskServiceImpl implements TaskService {
     public void deleteComment(UUID id) {
         //check if can delete
         commentRepository.deleteById(id);
+    }
+
+    @Override
+    public TaskDetailsDto getTaskDetails(UUID id) {
+        return new TaskDetailsDto();
     }
 
     private TaskEntity save(TaskEntity entity) {
