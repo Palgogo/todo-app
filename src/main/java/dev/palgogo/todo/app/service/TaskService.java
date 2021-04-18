@@ -3,6 +3,7 @@ package dev.palgogo.todo.app.service;
 import dev.palgogo.todo.app.dto.CommentDto;
 import dev.palgogo.todo.app.dto.CreateCommentRequest;
 import dev.palgogo.todo.app.dto.CreateTaskRequest;
+import dev.palgogo.todo.app.dto.TaskDetailsDto;
 import dev.palgogo.todo.app.dto.TaskDto;
 import dev.palgogo.todo.app.dto.UpdateAssigneeRequest;
 import dev.palgogo.todo.app.dto.UpdateStatusRequest;
@@ -19,4 +20,7 @@ public interface TaskService {
     CommentDto addComment(CreateCommentRequest createCommentRequest);
 
     void deleteComment(UUID id);
+
+    TaskDetailsDto getTaskDetails(UUID id);
+
 }

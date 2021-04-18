@@ -3,13 +3,16 @@ package dev.palgogo.todo.app.controller;
 import dev.palgogo.todo.app.dto.CommentDto;
 import dev.palgogo.todo.app.dto.CreateCommentRequest;
 import dev.palgogo.todo.app.dto.CreateTaskRequest;
+import dev.palgogo.todo.app.dto.TaskDetailsDto;
 import dev.palgogo.todo.app.dto.TaskDto;
 import dev.palgogo.todo.app.dto.UpdateAssigneeRequest;
 import dev.palgogo.todo.app.dto.UpdateStatusRequest;
 import dev.palgogo.todo.app.service.TaskService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -65,5 +68,12 @@ public class TaskController {
     ){
         taskService.deleteComment(commentId);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "{id}/details", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public ResponseEntity<TaskDetailsDto> getTaskDetails(
+            @PathVariable UUID id
+    ){
+        return ResponseEntity.ok(taskService.getTaskDetails(id));
     }
 }
