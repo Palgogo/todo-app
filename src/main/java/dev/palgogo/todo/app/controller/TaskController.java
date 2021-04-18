@@ -2,6 +2,7 @@ package dev.palgogo.todo.app.controller;
 
 import dev.palgogo.todo.app.dto.CreateTaskRequest;
 import dev.palgogo.todo.app.dto.TaskDto;
+import dev.palgogo.todo.app.dto.UpdateAssigneeRequest;
 import dev.palgogo.todo.app.dto.UpdateStatusRequest;
 import dev.palgogo.todo.app.service.TaskService;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,15 @@ public class TaskController {
             @RequestBody UpdateStatusRequest updateStatusRequest
     ) {
         taskService.updateStatus(id, updateStatusRequest);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{id}/asignee")
+    public ResponseEntity<Void> updateAssignee(
+            @PathVariable UUID id,
+            @RequestBody UpdateAssigneeRequest updateAssigneeRequest
+    ) {
+        taskService.updateAssignee(id, updateAssigneeRequest);
         return ResponseEntity.noContent().build();
     }
 }

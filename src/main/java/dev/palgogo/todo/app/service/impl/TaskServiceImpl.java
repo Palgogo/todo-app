@@ -2,6 +2,7 @@ package dev.palgogo.todo.app.service.impl;
 
 import dev.palgogo.todo.app.dto.CreateTaskRequest;
 import dev.palgogo.todo.app.dto.TaskDto;
+import dev.palgogo.todo.app.dto.UpdateAssigneeRequest;
 import dev.palgogo.todo.app.dto.UpdateStatusRequest;
 import dev.palgogo.todo.app.entity.TaskEntity;
 import dev.palgogo.todo.app.entity.TaskStatus;
@@ -33,6 +34,15 @@ public class TaskServiceImpl implements TaskService {
         Optional<TaskEntity> entityOptional = taskRepository.findById(id);
         entityOptional.ifPresent(taskEntity -> {
             taskEntity.setStatus(updateStatusRequest.getStatus());
+            taskRepository.save(taskEntity);
+        });
+    }
+
+    @Override
+    public void updateAssignee(UUID id, UpdateAssigneeRequest updateAssigneeRequest) {
+        Optional<TaskEntity> entityOptional = taskRepository.findById(id);
+        entityOptional.ifPresent(taskEntity -> {
+            taskEntity.setAssigneeId(updateAssigneeRequest.getAssigneeId());
             taskRepository.save(taskEntity);
         });
     }
