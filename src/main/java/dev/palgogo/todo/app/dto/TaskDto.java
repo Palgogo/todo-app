@@ -1,14 +1,14 @@
 package dev.palgogo.todo.app.dto;
 
 import dev.palgogo.todo.app.entity.TaskStatus;
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 import java.util.UUID;
 
 @Data
-@Builder
+@NoArgsConstructor
 public class TaskDto {
     private UUID id;
     private Instant createdAt;
