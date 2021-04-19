@@ -7,8 +7,10 @@ import dev.palgogo.todo.app.dto.TaskDetailsDto;
 import dev.palgogo.todo.app.dto.TaskDto;
 import dev.palgogo.todo.app.dto.UpdateAssigneeRequest;
 import dev.palgogo.todo.app.dto.UpdateStatusRequest;
+import dev.palgogo.todo.app.entity.TaskStatus;
 import dev.palgogo.todo.app.service.TaskService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -75,5 +77,23 @@ public class TaskController {
             @PathVariable UUID id
     ){
         return ResponseEntity.ok(taskService.getTaskDetails(id));
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<TaskDto>> getTasks(
+            @RequestParam(value = "page", required = false, defaultValue = "0")
+                    int page,
+            @RequestParam(value = "size", required = false, defaultValue = "10")
+                    int size,
+            @RequestParam(required = false)
+                    UUID departmentId,
+            @RequestParam(required = false)
+                    UUID userId,
+            @RequestParam(value = "order", required = false, defaultValue = "ASC")
+                    String order,
+            @RequestParam(value = "status", required = false, defaultValue = "OPEN")
+            TaskStatus status
+    ){
+        return ResponseEntity.ok(taskService.getTasks(departmentId, userId, status, order, page, size));
     }
 }

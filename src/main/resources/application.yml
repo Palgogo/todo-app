@@ -28,3 +28,6 @@ spring:
   liquibase:
     change-log: classpath:db/changelog/master-changelog.yaml
     default-schema: ${POSTGRES_DEFAULT_SCHEMA}
+
+rating-service:
+  access-token: token

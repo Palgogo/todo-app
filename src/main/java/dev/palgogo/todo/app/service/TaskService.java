@@ -7,6 +7,8 @@ import dev.palgogo.todo.app.dto.TaskDetailsDto;
 import dev.palgogo.todo.app.dto.TaskDto;
 import dev.palgogo.todo.app.dto.UpdateAssigneeRequest;
 import dev.palgogo.todo.app.dto.UpdateStatusRequest;
+import dev.palgogo.todo.app.entity.TaskStatus;
+import org.springframework.data.domain.Page;
 
 import java.util.UUID;
 
@@ -23,4 +25,5 @@ public interface TaskService {
 
     TaskDetailsDto getTaskDetails(UUID id);
 
+    Page<TaskDto> getTasks(UUID departmentId, UUID userId, TaskStatus status, String order, int page, int size);
 }
