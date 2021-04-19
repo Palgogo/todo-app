@@ -9,11 +9,13 @@ import dev.palgogo.todo.app.dto.UpdateAssigneeRequest;
 import dev.palgogo.todo.app.dto.UpdateStatusRequest;
 import dev.palgogo.todo.app.entity.TaskStatus;
 import org.springframework.data.domain.Page;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface TaskService {
-    TaskDto create(CreateTaskRequest createTaskRequest);
+    TaskDto create(CreateTaskRequest createTaskRequest, List<MultipartFile> files);
 
     void updateStatus(UUID id, UpdateStatusRequest updateStatusRequest);
 

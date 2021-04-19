@@ -17,7 +17,9 @@ import dev.palgogo.todo.app.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -29,10 +31,10 @@ public class TaskServiceImpl implements TaskService {
     private final CommentRepository commentRepository;
 
     @Override
-    public TaskDto create(CreateTaskRequest createTaskRequest) {
+    public TaskDto create(CreateTaskRequest createTaskRequest, List<MultipartFile> files) {
         TaskEntity entity = taskMapper.toTaskEntity(createTaskRequest);
         TaskEntity taskEntity = save(entity);
-
+//save files
         return taskMapper.toTaskDto(taskEntity);
     }
 
