@@ -13,9 +13,9 @@ import dev.palgogo.todo.app.entity.TaskStatus;
 import dev.palgogo.todo.app.mapper.TaskMapper;
 import dev.palgogo.todo.app.repository.CommentRepository;
 import dev.palgogo.todo.app.repository.TaskRepository;
-import dev.palgogo.todo.app.service.AttachmentService;
 import dev.palgogo.todo.app.service.TaskService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -27,7 +27,6 @@ public class TaskServiceImpl implements TaskService {
     private final TaskMapper taskMapper;
     private final TaskRepository taskRepository;
     private final CommentRepository commentRepository;
-    private final AttachmentService attachmentService;
 
     @Override
     public TaskDto create(CreateTaskRequest createTaskRequest) {
@@ -76,6 +75,14 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public TaskDetailsDto getTaskDetails(UUID id) {
         return new TaskDetailsDto();
+    }
+
+    @Override
+    public Page<TaskDto> getTasks(UUID departmentId, UUID userId, TaskStatus status, String order, int page, int size) {
+        //get tasks by department and status or user and status
+        //get user rating and update dto
+        //return needed
+        return Page.empty();
     }
 
     private TaskEntity save(TaskEntity entity) {
