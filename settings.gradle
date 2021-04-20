@@ -11,4 +11,11 @@ pluginManagement {
         }
     }
 }
+
 rootProject.name = 'todolist-test-app'
+include 'user-service'
+include 'department-service'
+include 'attachment-service'
+include 'task-service'
+include 'application'
+
