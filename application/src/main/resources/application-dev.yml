@@ -1,0 +1,10 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/todoapp?currentSchema=todo_v1
+    username: todo
+    password: todo
+  liquibase:
+    default-schema: todo_v1
