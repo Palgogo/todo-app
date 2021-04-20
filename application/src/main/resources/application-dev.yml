@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/todoapp?currentSchema=todo_v1
+    url: jdbc:postgresql://localhost:5432/todo?currentSchema=todo_v1
     username: todo
     password: todo
   liquibase:
